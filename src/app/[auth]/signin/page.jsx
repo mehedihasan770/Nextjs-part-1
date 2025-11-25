@@ -8,7 +8,7 @@ import { FaEyeSlash, FaRegEye } from 'react-icons/fa';
 import { GrGoogle } from 'react-icons/gr';
 
 const Page = () => {
-    const { googleSignin, signInEP } = useContext(AuthContext)
+    const { googleSignin, signInEP, setLoading } = useContext(AuthContext)
     const router = useRouter()
     const [to, setTo] = useState(true)
     const handleEPSignIn = e => {
@@ -19,8 +19,12 @@ const Page = () => {
         .then(() => {
             router.push('/');
             toast.success('SignIn Successful')
+            setLoading(false)
         })
-        .catch(err => toast.error(err.message))
+        .catch(err => {
+            toast.error(err.message)
+            setLoading(false)
+        })
     }
 
     const handleGoogleSignin = () => {
@@ -29,7 +33,10 @@ const Page = () => {
             router.push('/');
             toast.success('SignIn Successful')
         })
-        .catch(err => toast.error(err.message))
+        .catch(err => {
+            toast.error(err.message)
+            setLoading(false)
+        })
     }
 
     return (

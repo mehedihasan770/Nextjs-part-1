@@ -9,29 +9,35 @@ import { FaRegEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
 const Page = () => {
-    const { googleSignin, signUnEP } = useContext(AuthContext)
+    const { googleSignin, signUnEP, setLoading } = useContext(AuthContext)
     const [to, setTo] = useState(true)
     const router = useRouter()
     const handleEPSignup = e => {
         e.preventDefault();
-        const name = e.target.name.value;
         const email = e.target.email.value;
         const pass = e.target.pass.value;
-        console.log({name, email, pass})
         signUnEP(email, pass)
         .then(() => {
             router.push('/');
             toast.success('SignUp Successful')
+            setLoading(false)
         })
-        .catch(err => toast.error(err.message))
+        .catch(err => {
+            toast.error(err.message)
+            setLoading(false)
+        })
     } 
     const handleGoogleSignup = () => {
         googleSignin()
         .then(() => {
             router.push('/');
             toast.success('SignUp Successful')
+            setLoading(false)
         })
-        .catch(error => toast.error(error.message))
+        .catch(error => {
+            setLoading(false)
+            toast.error(error.message)
+        })
     }
     return (
 <div>

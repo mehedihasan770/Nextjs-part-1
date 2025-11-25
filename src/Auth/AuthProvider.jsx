@@ -40,6 +40,7 @@ export function AuthProvider({ children }) {
     const userInfo = {
         user,
         loading,
+        setLoading,
         signUnEP,
         signInEP,
         googleSignin,
