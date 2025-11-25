@@ -10,7 +10,7 @@ const Section3 = () => {
     useEffect(() => {
         setTimeout(() => {setLoading(true)}, 0)
         setTimeout(() => {
-            axios.get('http://localhost:5000/product')
+            axios.get('https://my-next-js-server.vercel.app/product')
             .then(res => {
                 setProduct(res.data)
                 setLoading(false)

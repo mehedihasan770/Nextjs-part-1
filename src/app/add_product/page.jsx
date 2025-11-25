@@ -39,7 +39,7 @@ const Page = () => {
     const owner_email = user?.email;
     const create_at = new Date();
     const newProduct = {product_description, product_image, product_price, product_title, owner_email, create_at}
-    axios.post('http://localhost:5000/product', newProduct)
+    axios.post('https://my-next-js-server.vercel.app/product', newProduct)
     .then(res => {
       if(res.data.insertedId){
         Swal.fire({

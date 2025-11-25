@@ -13,7 +13,7 @@ const Page = () => {
     useEffect(() => {
         setTimeout(() => {setLoading(true)}, 0)
         const timer = setTimeout(async () => {
-            const res = await axios.get(`http://localhost:5000/product?id=${id}`);
+            const res = await axios.get(`https://my-next-js-server.vercel.app/product?id=${id}`);
             setOneProduct(res.data);
             setLoading(false);
         }, 300);

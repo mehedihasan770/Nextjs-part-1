@@ -10,7 +10,7 @@ const Page = () => {
     const [query, setQuery] = useState("");
     const [loading, setLoading] = useState(false)
     useEffect(() => {
-        axios.get('http://localhost:5000/product')
+        axios.get('https://my-next-js-server.vercel.app/product')
         .then(res => {
             setProduct(res.data)
         })
@@ -19,7 +19,7 @@ const Page = () => {
     useEffect(() => {
         setTimeout(() => {setLoading(true)}, 0)
         const timer = setTimeout(async () => {
-            const res = await axios.get(`http://localhost:5000/products/search?title=${query}`);
+            const res = await axios.get(`https://my-next-js-server.vercel.app/products/search?title=${query}`);
             setProduct(res.data);
             setLoading(false)
         }, 300);

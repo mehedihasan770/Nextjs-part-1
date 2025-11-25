@@ -22,7 +22,7 @@ const Page = () => {
       setTimeout(() => {setLoading1(true)}, 0)
       setTimeout(() => {
         if(user){
-          axios.get(`http://localhost:5000/product?email=${user?.email}`)
+          axios.get(`https://my-next-js-server.vercel.app/product?email=${user?.email}`)
           .then(res => {
             setOwnerProduct(res.data)
             setLoading1(false)
@@ -42,7 +42,7 @@ const Page = () => {
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
       if (result.isConfirmed) {
-          axios.delete(`http://localhost:5000/delete_product/${id}`)
+          axios.delete(`https://my-next-js-server.vercel.app/delete_product/${id}`)
           .then(res => {
           if(res.data.deletedCount){
             Swal.fire({
